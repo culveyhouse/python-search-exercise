@@ -1,0 +1,34 @@
+[
+    {
+        "attribution": "Raven et al",
+        "briefDescription": "",
+        "chapterPrice": 3.99,
+        "copyrightYear": 2010,
+        "description": "Need Raven Biology for your class? Try the Inkling version! Breeze through homework with interactive quizzes, visual guided tours, and quick reference tools like an interactive glossary. It\u2019s everything you need for your course, evolved. No book required.",
+        "edition": "9th edition",
+        "price": 139.99,
+        "primaryCategory": "Science",
+        "publisher": "McGraw-Hill",
+        "subCategories": [],
+        "subtitle": "",
+        "thumbnail": "data/thumbnails/book-13.jpeg",
+        "title": "Biology",
+        "url": "https://www.inkling.com/store/book/biology-peter-raven-9th/"
+    },
+    {
+        "attribution": "Rene Fester Kratz and Donna Rae Siegfried",
+        "briefDescription": "",
+        "chapterPrice": 1.99,
+        "copyrightYear": 2010,
+        "description": "Want to see what you're made of? Get Biology For Dummies on Inkling. Whether on iPad, iPhone or the web, easily navigate your book with hundreds of live cross-links with the book and to the web. Dive beneath the surface with Test Yourself figures, Guided Tours, and Slideshows. There's even a powerful search engine for finding just what you need. Grasping the complexity of life on earth just got easier.",
+        "edition": "2nd edition",
+        "price": 14.99,
+        "primaryCategory": "Science",
+        "publisher": "John Wiley & Sons, Inc",
+        "subCategories": [],
+        "subtitle": "",
+        "thumbnail": "data/thumbnails/book-10.jpeg",
+        "title": "Biology For Dummies",
+        "url": "https://www.inkling.com/store/book/biology-dummies-kratz-siegfried-2nd/"
+    }
+]

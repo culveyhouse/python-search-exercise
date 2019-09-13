@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--
+  This page serves as a homepage for the 3 API controllers. Clicking on the
+  controller links makes a simple request to the specific controller
+  implemented in src/controllers.
+
+  To display this page in your browser run src/index.py file and go to:
+    http://localhost:9000
+-->
+<html>
+<head>
+  <title>Inkling Python Code Challenge - Index</title>
+  <meta charset="UTF-8" />
+  <style>
+    /* Styling borrowed from GitHub's markdown rendering. */
+    body {
+      padding: 45px;
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+        Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+        "Segoe UI Symbol";
+      line-height: 1.5;
+    }
+
+    h1 {
+      font-size: 2em;
+      border-bottom: 1px solid #eaecef;
+      margin-top: 0;
+      margin-bottom: 16px;
+      font-weight: 600;
+      line-height: 1.25;
+      padding-bottom: 0.3em;
+    }
+
+    h3 {
+      font-size: 1.25em;
+      margin-top: 24px;
+      margin-bottom: 16px;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    ul {
+      padding-left: 2em;
+      margin-top: 0;
+    }
+
+    a {
+      color: #0366d6;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Inkling Python Challenge</h1>
+  <p>Welcome to the challenge!</p>
+  <p>This page contains links to the controller challenge endpoints for convenience.</p>
+  <h3>Links</h3>
+  <ul>
+    <li><a href="/index?searchTerm=biology">SimpleAutocompleteController</a></li>
+    <li><a href="/pagedindex?searchTerm=biology">PagedAutocompleteController</a></li>
+    <li><a href="/generalindex?q=title:biology">GeneralAutocompleteController</a></li>
+  </ul>
+</body>
+</html>
+
