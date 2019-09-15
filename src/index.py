@@ -10,7 +10,8 @@ from controllers.general_autocomplete_controller import GeneralAutocompleteContr
 from controllers.paged_autocomplete_controller import PagedAutocompleteController
 from controllers.simple_autocomplete_controller import SimpleAutocompleteController
 
-PORT = 9000
+IP = '0.0.0.0'
+PORT = 8080
 VIEWS_PATH = os.path.join(os.path.dirname(__file__), 'views/index.html')
 
 # SimpleHTTPServer serves files from within the working
@@ -51,13 +52,13 @@ class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
         return SimpleHTTPServer.SimpleHTTPRequestHandler.do_GET(self)
 
-httpd = SocketServer.TCPServer(('0.0.0.0', PORT), Handler)
+httpd = SocketServer.TCPServer((IP, PORT), Handler)
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 try:
-    logger.info('Challenge server is listening on http://localhost:9000')
+    logger.info('Challenge server is listening on http://{}:{}'.format(IP, PORT))
     httpd.serve_forever()
 except KeyboardInterrupt:
     httpd.server_close()
