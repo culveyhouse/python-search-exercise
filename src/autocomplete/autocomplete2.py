@@ -8,7 +8,7 @@ class Autocomplete2:
         """Searches through the possible suggestions, creating an array of
         matches for any books whose title matches the specified search term.
 
-        This should perform a case sensitive prefix search.
+        This method performs a case sensitive prefix search.
 
         Example:
             With 'Biology' specified as the term a book with the title
