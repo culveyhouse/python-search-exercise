@@ -47,12 +47,6 @@ class Autocomplete3:
         for k, v in terms.iteritems():
             terms[k] = str(v)
             term_search[k] = re.compile(r"{}".format(v), re.I)
-        print("terms are" , terms)
-        print("offset is ", offset)
-        
-        for k, v in term_search.iteritems():
-            print("regex is ", k, v.pattern)
-        
 
         # Boolean to return whether there are more paginated results beyond limit
         truncated = False
@@ -87,7 +81,6 @@ class Autocomplete3:
                     if k in fields:
                         this_subset[k] = v
                 subset_results.append(this_subset)
-            print("subset results are: " , subset_results)
             sorted_results = subset_results
             del subset_results
         
@@ -95,6 +88,5 @@ class Autocomplete3:
         limit/offset arguments, in which case indicate whether there was a 
         remainder that was truncated 
         """
-
         return (sorted_results, truncated) if offset>=0 else sorted_results  
         

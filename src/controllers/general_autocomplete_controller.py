@@ -41,13 +41,7 @@ class GeneralAutocompleteController:
                 'result': <List>
             }
         """
-        #fields = 'title,primaryCategory,copyrightYear,edition'
-        #query = 'primaryCategory:business,copyrightYear:2012' 
-        #count = 5
-        #pageStart = 2
-        
-        #query = 'title:Hello%20World%20%21%20,attribution:raven'
-        #print("query is {}".format(query))
+
         search_dict = {} # dict to store the converted key:value search terms
         more_results = False # Boolean to indicate whether there are more results
         pageNext = None # Int to indicate the paging key for use with next page link
@@ -60,7 +54,6 @@ class GeneralAutocompleteController:
             k,v = kv.split(':')
             v = urllib.unquote(v)
             search_dict[k]=v
-        print('search_dict is now',search_dict)
         
         if fields:
             fields = fields.split(',')
@@ -75,9 +68,6 @@ class GeneralAutocompleteController:
         """
         results, more_results = autocomplete.performSearch(search_dict, count, 
             (pageStart-1)*count, fields)
-        rezultz = autocomplete.performSearch(search_dict, count, 
-            (pageStart-1)*count, fields)
-        print("resultz", rezultz)
 
         status = {'moreResults': more_results}
         
