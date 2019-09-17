@@ -31,6 +31,7 @@ class SimpleAutocompleteController:
         searchTerm = urllib.unquote(searchTerm)
         
         data = Suggestions.load() # load JSON data from data/suggestions.json
+        
         # Autocomplete3 has all functionality necessary for this controller
         autocomplete = Autocomplete3(data) 
         results = autocomplete.performSearch(searchTerm)

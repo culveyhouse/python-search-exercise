@@ -1,3 +1,12 @@
+import urllib
+
+# Required since Pytest and simple HTTP server do not handle relative paths the same
+import sys, os
+sys.path.append(os.path.realpath(os.path.dirname(__file__)+"/.."))
+
+from autocomplete.autocomplete3 import Autocomplete3
+from autocomplete.suggestions import Suggestions
+
 class GeneralAutocompleteController:
     @classmethod
     def index(cls, query, fields, count, pageStart):
@@ -32,8 +41,53 @@ class GeneralAutocompleteController:
                 'result': <List>
             }
         """
-        # TODO: Implement this.
-        return {
-            'status': {},
-            'result': []
+        #fields = 'title,primaryCategory,copyrightYear,edition'
+        #query = 'primaryCategory:business,copyrightYear:2012' 
+        #count = 5
+        #pageStart = 2
+        
+        #query = 'title:Hello%20World%20%21%20,attribution:raven'
+        #print("query is {}".format(query))
+        search_dict = {} # dict to store the converted key:value search terms
+        more_results = False # Boolean to indicate whether there are more results
+        pageNext = None # Int to indicate the paging key for use with next page link
+        if not pageStart:
+            pageStart = 1 # E stablish human-readable "page 1" if no pagination yet
+
+        # Decode any URL encoded characters in the searchTerm query string
+        search_kv = query.split(',')
+        for kv in search_kv:
+            k,v = kv.split(':')
+            v = urllib.unquote(v)
+            search_dict[k]=v
+        print('search_dict is now',search_dict)
+        
+        if fields:
+            fields = fields.split(',')
+
+        data = Suggestions.load() # load JSON data from data/suggestions.json
+        
+        # Autocomplete3 has all functionality necessary for this controller
+        autocomplete = Autocomplete3(data) 
+        
+        """Get list of dictionary items up to max "count", as well as the 
+        boolean moreResults which indicates whether more pages of results exist
+        """
+        results, more_results = autocomplete.performSearch(search_dict, count, 
+            (pageStart-1)*count, fields)
+        rezultz = autocomplete.performSearch(search_dict, count, 
+            (pageStart-1)*count, fields)
+        print("resultz", rezultz)
+
+        status = {'moreResults': more_results}
+        
+        # Add "pageNext" to status dict if the performSearch indicated more results
+        if more_results: 
+            status['pageNext'] = pageStart+1
+        
+        return_dict = {
+            'status': status,
+            'result': results
         }
+
+        return return_dict

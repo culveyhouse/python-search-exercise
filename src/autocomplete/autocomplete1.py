@@ -32,7 +32,7 @@ class Autocomplete1:
 
         for suggestion in self.suggestions:
             # Our suggestions may contain special UTF-8 characters            
-            title = suggestion['title'].encode("utf-8")
+            title = repr(suggestion['title']).encode("utf-8")
             if term_search.search(title): 
                 results.append(suggestion)
                 
