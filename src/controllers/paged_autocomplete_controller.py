@@ -66,7 +66,7 @@ class PagedAutocompleteController:
         status = {'moreResults': more_results}
         
         # Add "pageNext" to status dict if the performSearch indicated more results
-        if moreResults: 
+        if more_results: 
             status['pageNext'] = pageStart+1
         
         return_dict = {
