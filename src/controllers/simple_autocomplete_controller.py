@@ -1,3 +1,12 @@
+import urllib
+
+# Required since Pytest and simple HTTP server do not handle relative paths the same
+import sys, os
+sys.path.append(os.path.realpath(os.path.dirname(__file__)+"/.."))
+
+from autocomplete.autocomplete3 import Autocomplete3
+from autocomplete.suggestions import Suggestions
+
 class SimpleAutocompleteController:
     @classmethod
     def index(cls, searchTerm):
@@ -17,7 +26,14 @@ class SimpleAutocompleteController:
                 'result': <List>
             }
         """
-        # TODO: Implement this.
+
+        # Decode any URL encoded characters in the searchTerm query string
+        searchTerm = urllib.unquote(searchTerm)
+        
+        data = Suggestions.load() # load JSON data from data/suggestions.json
+        # Autocomplete3 has all functionality necessary for this controller
+        autocomplete = Autocomplete3(data) 
+        results = autocomplete.performSearch(searchTerm)
         return {
-            'result' : []
+            'result' : results
         }

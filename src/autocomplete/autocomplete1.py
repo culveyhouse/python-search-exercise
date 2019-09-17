@@ -8,7 +8,7 @@ class Autocomplete1:
         """Searches through the possible suggestions, creating an array of
         matches for any books whose title matches the specified search term.
 
-        This should perform a case sensitive contains search.
+        This method performs a case sensitive contains search.
 
         Example:
             With 'biology' specified as the term a book with the title
