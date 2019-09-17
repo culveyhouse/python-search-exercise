@@ -16,12 +16,11 @@ class TestPagedAutocompleteController(object):
         response = PagedAutocompleteController.index('biology', 15, None)
 
         assert response['status']['moreResults'] == True
-        assert response['status']['pageNext'] == '<somePageKey>'
+        assert response['status']['pageNext'] == 2
 
     def testReturnSecondPageOfSuggestions(self):
-        response = PagedAutocompleteController.index('biology', 15, '<somePageKey>')
+        response = PagedAutocompleteController.index('biology', 15, 2)
 
         assert len(response['result']) == 14
         assert response['status']['moreResults'] == False
-
         # TODO: Add more validation for this test case.
