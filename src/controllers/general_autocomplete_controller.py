@@ -48,11 +48,11 @@ class GeneralAutocompleteController:
         if not pageStart:
             pageStart = 1 # E stablish human-readable "page 1" if no pagination yet
 
-        # Decode any URL encoded characters in the searchTerm query string
+        # Decode any URL encoded characters in the searchTerm query string        
         search_kv = query.split(',')
         for kv in search_kv:
             k,v = kv.split(':')
-            v = urllib.unquote(v)
+            v = urllib.unquote(v) 
             search_dict[k]=v
         
         if fields:
