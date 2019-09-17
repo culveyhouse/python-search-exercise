@@ -1,3 +1,12 @@
+import urllib
+
+# Required since Pytest and simple HTTP server do not handle relative paths the same
+import sys, os
+sys.path.append(os.path.realpath(os.path.dirname(__file__)+"/.."))
+
+from autocomplete.autocomplete3 import Autocomplete3
+from autocomplete.suggestions import Suggestions
+
 class PagedAutocompleteController:
     @classmethod
     def index(cls, searchTerm, count, pageStart):
@@ -21,7 +30,7 @@ class PagedAutocompleteController:
         Args:
             searchTerm - the term to search for.
             count - the max number of results to return.
-            pageStart - parameter to indicate where to start the page.
+            pageStart - int to indicate which "page" to continue page results
 
         Return:
             Dictionary containing the list of results that match the
@@ -36,8 +45,33 @@ class PagedAutocompleteController:
                 'result': <List>
             }
         """
-        # TODO: Implement this.
-        return {
-            'status': {},
-            'result': []
+        
+        more_results = False # Boolean to indicate whether there are more results
+        pageNext = None # Int to indicate the paging key for use with next page link
+        if not pageStart:
+            pageStart = 1 # Establish human-readable "page 1" if no pagination yet
+        # Decode any URL encoded characters in the searchTerm query string
+        searchTerm = urllib.unquote(searchTerm)       
+        
+        data = Suggestions.load() # load JSON data from data/suggestions.json
+        
+        # Autocomplete3 has all functionality necessary for this controller
+        autocomplete = Autocomplete3(data) 
+        
+        """Get list of dictionary items up to max "count", as well as the 
+        boolean moreResults which indicates whether more pages of results exist
+        """
+        results, more_results = autocomplete.performSearch(searchTerm, count, (pageStart-1)*count)
+
+        status = {'moreResults': more_results}
+        
+        # Add "pageNext" to status dict if the performSearch indicated more results
+        if moreResults: 
+            status['pageNext'] = pageStart+1
+        
+        return_dict = {
+            'status': status,
+            'result': results
         }
+
+        return return_dict
