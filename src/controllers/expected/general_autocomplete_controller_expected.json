@@ -1,0 +1,33 @@
+[
+    {
+        "copyrightYear": 2012, 
+        "edition": "12th edition", 
+        "primaryCategory": "Business & Finance", 
+        "title": "Consumer Behavior"
+    }, 
+    {   
+        "copyrightYear": 2012, 
+        "edition": "14th edition", 
+        "primaryCategory": "Business & Finance", 
+        "title": "Contemporary Advertising and Integrated Marketing Communications"
+    }, 
+    {   
+        "copyrightYear": 2012,         
+        "edition": "10th edition", 
+        "primaryCategory": "Business & Finance", 
+        "title": "Corporate Finance"
+    }, 
+    {   
+        "copyrightYear": 2012, 
+        "edition": "5th edition", 
+        "primaryCategory": "Business & Finance", 
+        "title": "Essentials of Contemporary Management"
+    }, 
+    {   
+        "copyrightYear": 2012, 
+        "edition": "9th edition", 
+        "copyrightYear": 2012, 
+        "primaryCategory": "Business & Finance", 
+        "title": "Essentials of Investments"
+    }
+]
